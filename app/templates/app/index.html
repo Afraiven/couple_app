@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <title>Ily!!!</title>
+
+    <style>
+      /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #f9bf3b #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #f9bf3b;
+    border-radius: 10px;
+  }
+
+      * {
+        font-family: 'Prompt', sans-serif;
+      }
+      body {
+        background-color: #f9bf3b;
+        margin: 0;
+        padding: 0;
+        font-size: 1.7rem;
+        height: 98vh;
+        width: 100vw;
+        padding-top: 2vh;
+        overflow: hidden;
+      }
+
+      .heart {
+        background-image: url("https://cdn-icons-png.flaticon.com/512/210/210545.png");
+        width: 15vh;
+        height: 15vh;
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: right;
+        margin: 1vh;
+        filter:saturate(0.1);
+      }
+
+      .active {
+        filter:saturate(1);
+        cursor: pointer;
+        transition: all .3s ease;
+      }
+
+      .cb {
+        clear: both;
+      }
+      #lottery {
+        width: 100vw;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 10vh;
+      }
+      h1, p, h3{
+        text-align: center;
+        color: #fff;
+        text-shadow: 0px 0px 19px rgba(66, 68, 90, 1);
+        z-index: 999;
+        user-select: none;
+      }
+      .end {
+        border-radius: 10px;
+        margin: 0 !important;
+        background-color: rgb(255, 0, 4, 1);
+        -webkit-box-shadow: 0px 0px 23px 28px rgba(255, 0, 4, 1);
+-moz-box-shadow: 0px 0px 23px 28px rgba(255, 0, 4, 1);
+box-shadow: 0px 0px 23px 28px rgba(255, 0, 4, 1);
+      }
+      h1 {
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+      .active:hover {
+        scale: 1.1;
+        filter: saturate(2);
+        filter: drop-shadow(0 0 0.75rem rgb(255, 76, 112));
+      }
+      #pomoc {
+        position: absolute;
+        bottom: 4vw;
+        height: 30vh;
+        right: 3vw;
+        width: 30vh;
+        text-align: center;
+        transition: all .2s ease;
+      }
+      #statystyki {
+        position: absolute;
+        bottom: 3vw;
+        left: 3vw;
+        height: 30vh;
+        width: 30vh;
+        text-align: center;
+        transition: all .2s ease;
+      }
+
+      #statystyki img, #pomoc img{
+        max-width: 100%;
+        max-height: 100%;
+        user-select: none;
+      }   
+      #statystyki h3, #pomoc h3{
+        margin: 0 !important;
+      }
+      #statystyki:hover, #pomoc:hover{
+        scale: 1.05;
+        cursor: pointer;
+      }
+
+      .infodiv {
+        overflow: auto;
+        text-align: center;
+        padding-top: 3vh;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        width: 54vw;
+        height: 77vh;
+        background-color: #fff;
+        position: absolute;
+        top: 50%; right: 50%;
+        transform: translate(50%,-50%);
+        border-radius: 30px;
+        border: 10px rgba(0, 0, 0, 0.701) solid;
+        transition: all .3s ease;
+      }
+      #container {
+        
+        height: 98vh;
+        width: 100vw;
+      }
+    .tiny-heart {
+      position: absolute;
+      opacity: 0;
+      background-color: #f84d6a;
+      box-shadow: 0px 0px 50px 4px transparentize(#ef233c, 0.3);
+      animation: animated-heart infinite ease-in;
+      }
+      .tiny-heart:before, .tiny-heart:after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #d90429;
+      }
+      .tiny-heart:before {
+        transform: translateX(-50%);
+      }
+      .tiny-heart:after {
+        transform: translateY(-50%);
+      }
+
+    @keyframes animated-heart {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(45deg);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(0, -40%) rotate(45deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(0, -1000%) rotate(45deg);
+      }
+    }
+
+      .blured {
+        filter: blur(10px);
+      }
+      #counter {
+        color: rgb(0, 187, 0); 
+        text-align: center;
+        text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        z-index: 999;
+        user-select: none;
+      }
+      #statystyki_info {
+        margin-top: 10vh;
+        display: block;
+      }
+      #fixed_hearts {
+        display: none;
+      }
+      .hide {
+        display: none;
+      }
+      li {
+        height: 20vh;
+        text-align: left;
+        
+      }
+      p {
+        margin-top: 1vh;
+      }
+      #grouper {
+        display: inline;
+      }
+      @keyframes example {
+        0% {
+            z-index: 1;
+            filter: hue-rotate(0deg) saturate(1);
+            transform: scale(1.0);
+        }
+        90% {
+            z-index: 1;
+            filter: hue-rotate(360deg) saturate(2);
+            transform: scale(5.0);
+        }
+        100% {
+            z-index: 1;
+            filter:saturate(0.1);
+            transform: scale(0);
+        }
+      }
+
+      .grayed {
+        z-index: 0;
+        position: relative;
+        animation-name: example;
+        animation-duration: 3s;
+      }
+      </style>
+</head>
+<body>
+    <input type="text" id="fixed_hearts" value={{ile_widzianych}}>
+    <div id="container">
+      <h1 class="effect-text">Daily dose of attention</h1>
+      <p>Trzy codzienne serduszka</p>
+      <p><span id="counter">{{ daily_counter }}/3 left</span></p>
+      <div id="lottery">
+        <div>
+          {% if daily_counter == 0 %}
+          <p class="end">Wykorzystałaś wszystkie serduszka, <br> zajrzyj do magazynu by podziwiać swoją kolekcje</p>{% endif %}
+
+          {% if daily_counter != 0 %}
+          {% for tekst in teksty %}
+          <a id="{{tekst.code}}" class="link" href="#" target="_blank" rel="noopener noreferrer"><div onClick="decrease('{{tekst.id}}', event)" class="heart {% if forloop.counter0|divisibleby:3 %}cb{% endif %} {% if tekst.seen == 0 %}active{% endif %}"></div></a>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      <div id="statystyki" onClick="statystyki()">
+        <img id="kittenkiss" src="https://media.tenor.com/ZT0808KDKS8AAAAi/mochi-mochi-peach-cat-cat.gif" alt="">
+        <h3>Statystyki</h3>
+      </div>
+      <div id="pomoc" onClick="pomoc()">
+        <img id="kittendance" src="https://64.media.tumblr.com/1646f21877cfc86119bdf159fea2a223/tumblr_o1zkvajnqG1tqt1odo1_500.gif" alt="">
+        <h3>Magazyn </h3>
+      </div>
+    </div>
+    <div id="staty">
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      let linki = document.getElementsByClassName('link')
+      for (link of linki) {
+        
+        link.addEventListener('click', (e)=>{
+          e.preventDefault();
+
+      setTimeout(() =>{
+          window.open(window.location.href +"card/"+link.id, '_blank');
+      }, 3000);
+});
+      }
+    function close() {
+      let staty = document.getElementById("staty");
+      staty.classList.remove("infodiv");
+      let container = document.getElementById("container");
+      container.classList.remove("blured");
+      staty.innerHTML = ""
+      setTimeout(function() { document.body.removeEventListener("click", close); }, 200);
+    }
+
+    function statystyki() {
+      setTimeout(function() { document.body.addEventListener("click", close); }, 200);
+      
+      let staty = document.getElementById("staty");
+      staty.classList.add("infodiv");
+      const d = new Date();
+      let ile_milosc = d.getTime() * 31 + d.getTime();
+      let seen = document.getElementById("fixed_hearts").value;
+      staty.innerHTML = "<h1>Statystyki</h1><span id='statystyki_info'><h3>Otworzyłaś już: </h3>" + seen + " serduszek<span><span id='statystyki_info'><h3>Kocham Cię: </h3>" + ile_milosc + "<span>"
+      let container = document.getElementById("container");
+      container.classList.add("blured");
+    }
+    function pomoc() {
+      setTimeout(function() { document.body.addEventListener("click", close); }, 200);
+      
+      let staty = document.getElementById("staty");
+      staty.classList.add("infodiv");
+      let sda = "<ul>{% regroup opened by opened_date as ordered %}{% for tekst in ordered %}<li><h4 id='grouper'>{{tekst.grouper}}</h4>{% for heart in tekst.list %}<a href=" + "{% url 'show_card' code=heart.code %}" + " target='_blank' rel='noopener noreferrer'><div class='heart active'></div></a>{%endfor%}</li>{%endfor%}</ul>"
+      staty.innerHTML = sda
+      let container = document.getElementById("container");
+      container.classList.add("blured");
+    }
+
+      $(function() {
+  // Get random number between 2 ranges
+  function randomNum(m, n) {
+    m = parseInt(m);
+    n = parseInt(n);
+    return Math.floor(Math.random() * (n - m + 1)) + m;
+  }
+  
+  function heartAnimation() {
+    $this = $('.effect-text');
+    var heartCount = ($this.width()/50)*5;
+    for (var i = 0; i< heartCount; i++) {
+      var heartSize = (randomNum(60, 120) / 10);
+      $this.append('<span class="tiny-heart" style="top: '+ randomNum(2, 98) +'%; left: '+ randomNum(2, 98) +'%; width: '+ heartSize +'px; height: '+ heartSize +'px ; animation-delay: -'+ randomNum(0, 3) +'s; animation-duration: '+ randomNum(2, 5) +'s"></span>')
+    }
+  }
+  
+  heartAnimation();
+})
+  function decrease(id, ev) {
+    if (ev.target.classList.contains("grayed")) return
+    $.ajax({
+        url: "{% url 'c' %}",
+        type : "POST", // http method
+        
+        data : {
+          name: id,
+          csrfmiddlewaretoken: '{{ csrf_token }}' , //This is must for security in Django
+        }, // data sent with the post request
+        // handle a successful response
+        success : function(response){
+              document.getElementById("counter").innerHTML = response["counter"] + "/3 left";
+              ev.target.classList.remove("active");
+              ev.target.classList.add("grayed");
+              let seen = document.getElementById("fixed_hearts").value;
+              document.getElementById("fixed_hearts").value = parseInt(seen) + 1;
+              let how_many_active = document.getElementsByClassName("active")
+              if (response["counter"] == 0) {
+                for (a of how_many_active) {
+                  a.classList.add("hide");
+                }
+              }
+            },
+    });
+    }
+    </script>
+</body>
+</html>

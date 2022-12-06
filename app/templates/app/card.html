@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ily!!!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #efc3e6;
+        }
+        * {
+            font-family: 'Prompt', sans-serif;
+            font-size: 1.2rem;
+        }
+        #container {
+            color: #f0e6ef;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            width: 50vw;
+            height: 100vh;
+            margin: auto;
+            padding-right: 8vw;
+            padding-left: 8vw;
+            background-color: #9c89b8;
+        }
+        img {
+            width: 50%;
+            display: block;
+            margin: auto;
+            max-height: 50vh;
+        }
+        .two {
+            float: left;
+            display: inline !important;
+        }
+        #images {
+            margin-top: 4vh;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h3>{{card}}</h3>
+        <div id="images">
+            <img src="{{img}}" class="{% if img2 %}two{%endif%}" alt="">
+            {% if img2 %}
+            <img src="{{img2}}" class="{% if img2 %}two{%endif%}" alt="">
+            {% endif %}
+        </div>
+        
+    </div>
+</body>
+</html>
